@@ -1,0 +1,66 @@
+<view class="page">
+    <view class="card section">
+        <view class="section-head">导入日历（ICS）</view>
+        <text class="section-desc">从微信聊天里选择 .ics 文件，或直接粘贴日历内容。导入后可在日历、搜索和统计里查看。</text>
+        <view class="btn-row">
+            <button class="pick-btn" bindtap="chooseFile">选择文件</button>
+            <button class="pick-btn pick-ghost" bindtap="pasteContent">粘贴内容</button>
+        </view>
+        <textarea
+            class="content-box"
+            value="{{content}}"
+            bindinput="onContentInput"
+            placeholder="也可在此粘贴 ICS 内容（BEGIN:VCALENDAR ...）"
+            maxlength="-1"
+        />
+        <view class="content-tools" wx:if="{{content}}">
+            <text class="clear-btn" bindtap="clearContent">清空</text>
+        </view>
+        <button class="primary-btn" bindtap="doPreview">解析预览</button>
+    </view>
+
+    <!-- 解析预览 -->
+    <view class="card section" wx:if="{{preview && !preview.error}}">
+        <view class="section-head">解析结果</view>
+        <view class="summary-row">
+            <text class="summary-item">共 {{preview.total}} 条</text>
+            <text class="summary-item summary-add">可导入 {{preview.records.length}} 条</text>
+            <text class="summary-item" wx:if="{{preview.skipped > 0}}">跳过 {{preview.skipped}} 条</text>
+        </view>
+        <view class="tip-warn" wx:if="{{preview.truncated}}">单次最多导入 500 条，超出部分已跳过</view>
+
+        <view class="list-card">
+            <view class="preview-item" wx:for="{{preview.records}}" wx:key="_key">
+                <text class="preview-date">{{item.date}} {{item.time}}</text>
+                <view class="preview-info">
+                    <text class="preview-title">{{item.title}}</text>
+                    <text class="preview-meta" wx:if="{{item.content}}">{{item.content}}</text>
+                </view>
+            </view>
+            <view class="empty-view" wx:if="{{preview.records.length === 0}}">
+                <text class="empty-text">没有可导入的新日程（可能已存在）</text>
+            </view>
+        </view>
+
+        <button class="primary-btn" wx:if="{{preview.records.length > 0}}" bindtap="askImport">确认导入 {{preview.records.length}} 条</button>
+    </view>
+
+    <!-- 导入完成 -->
+    <view class="card section result-card" wx:if="{{result}}">
+        <text class="result-icon">✓</text>
+        <text class="result-title">导入完成</text>
+        <text class="result-desc">成功导入 {{result.imported}} 条<text wx:if="{{result.skipped > 0}}">，跳过重复 {{result.skipped}} 条</text></text>
+        <button class="primary-btn" bindtap="goCalendar">去日历查看</button>
+    </view>
+
+    <!-- 自定义确认弹层 -->
+    <view class="confirm-mask" wx:if="{{showConfirm}}" bindtap="cancelImport"></view>
+    <view class="confirm-dialog" wx:if="{{showConfirm}}">
+        <view class="confirm-title">确认导入</view>
+        <view class="confirm-content">将把 {{preview.records.length}} 条日程写入你的记录，重复日程会被跳过。确定导入吗？</view>
+        <view class="confirm-actions">
+            <view class="confirm-btn confirm-cancel" bindtap="cancelImport">取消</view>
+            <view class="confirm-btn confirm-ok" bindtap="confirmImport">导入</view>
+        </view>
+    </view>
+</view>

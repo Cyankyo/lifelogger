@@ -1,0 +1,280 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 160rpx;
+}
+
+.month-bar {
+    display: flex;
+    align-items: center;
+    padding: 8rpx 0 24rpx;
+}
+
+.month-arrow {
+    width: 64rpx;
+    height: 64rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48rpx;
+    color: #1769e0;
+}
+
+.month-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.month-title {
+    font-size: 34rpx;
+    font-weight: 600;
+}
+
+.month-today {
+    margin-top: 2rpx;
+    font-size: 20rpx;
+    color: #8a9099;
+}
+
+.search-btn {
+    padding: 12rpx 20rpx;
+    font-size: 24rpx;
+    color: #1769e0;
+    background: #eaf2ff;
+    border-radius: 999rpx;
+}
+
+.calendar {
+    padding: 20rpx 12rpx 24rpx;
+}
+
+.week-row {
+    display: flex;
+    border-bottom: 2rpx solid #f0f1f2;
+    padding-bottom: 12rpx;
+}
+
+.week-cell {
+    flex: 1;
+    text-align: center;
+    font-size: 24rpx;
+    color: #8a9099;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8rpx;
+}
+
+.grid-cell {
+    width: 14.285%;
+    min-height: 92rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rpx;
+    box-sizing: border-box;
+}
+
+.grid-cell-muted {
+    opacity: 0.25;
+}
+
+.day-num {
+    width: 52rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    text-align: center;
+    font-size: 26rpx;
+    border-radius: 50%;
+}
+
+.grid-cell-today .day-num {
+    color: #1769e0;
+    font-weight: 600;
+}
+
+.grid-cell-selected .day-num {
+    background: #1769e0;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.dots {
+    display: flex;
+    height: 16rpx;
+    margin-top: 4rpx;
+    align-items: center;
+}
+
+.dot {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    margin: 0 3rpx;
+}
+
+.day-section {
+    margin-top: 28rpx;
+}
+
+.day-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 8rpx 16rpx;
+}
+
+.day-title {
+    display: flex;
+    align-items: baseline;
+}
+
+.day-main {
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.day-sub {
+    margin-left: 12rpx;
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.day-count {
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.quick-checkin {
+    background: #ffffff;
+    border-radius: 20rpx;
+    padding: 20rpx 24rpx;
+    margin-bottom: 20rpx;
+}
+
+.quick-label {
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.quick-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16rpx;
+}
+
+.quick-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120rpx;
+    padding: 14rpx 0;
+    margin: 0 12rpx 12rpx 0;
+    background: #f5f7fa;
+    border-radius: 16rpx;
+}
+
+.quick-icon {
+    font-size: 36rpx;
+}
+
+.quick-name {
+    margin-top: 6rpx;
+    font-size: 22rpx;
+}
+
+.record-item {
+    margin-bottom: 16rpx;
+}
+
+.record-top {
+    display: flex;
+    align-items: center;
+}
+
+.record-type {
+    font-size: 20rpx;
+    padding: 4rpx 14rpx;
+    border-radius: 8rpx;
+    margin-right: 14rpx;
+}
+
+.type-note {
+    background: #eaf2ff;
+    color: #1769e0;
+}
+
+.type-checkin {
+    background: #fdeaf1;
+    color: #e4689a;
+}
+
+.record-title {
+    font-size: 30rpx;
+    font-weight: 500;
+    flex: 1;
+}
+
+.record-time {
+    font-size: 22rpx;
+    color: #8a9099;
+    flex-shrink: 0;
+    margin-left: 12rpx;
+    font-variant-numeric: tabular-nums;
+}
+
+.record-content {
+    display: block;
+    margin-top: 12rpx;
+    font-size: 26rpx;
+    color: #555b64;
+    line-height: 1.5;
+}
+
+.record-fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12rpx;
+}
+
+.field-item {
+    background: #f2f4f7;
+    color: #555b64;
+    font-size: 22rpx;
+    padding: 6rpx 16rpx;
+    border-radius: 8rpx;
+    margin: 0 12rpx 8rpx 0;
+}
+
+.record-tags {
+    margin-top: 14rpx;
+}
+
+.record-tags .tag-chip {
+    margin-right: 12rpx;
+}
+
+.fab {
+    position: fixed;
+    right: 40rpx;
+    bottom: 60rpx;
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+    background: #1769e0;
+    box-shadow: 0 8rpx 24rpx rgba(23, 105, 224, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fab-plus {
+    color: #ffffff;
+    font-size: 60rpx;
+    line-height: 1;
+    margin-top: -6rpx;
+}

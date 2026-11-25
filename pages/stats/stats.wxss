@@ -1,0 +1,157 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.summary-row {
+    display: flex;
+    margin-bottom: 24rpx;
+}
+
+.summary-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28rpx 0;
+    margin-right: 16rpx;
+}
+
+.summary-card:last-child {
+    margin-right: 0;
+}
+
+.summary-num {
+    font-size: 48rpx;
+    font-weight: 600;
+    color: #1769e0;
+}
+
+.summary-label {
+    margin-top: 8rpx;
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.section {
+    margin-bottom: 24rpx;
+}
+
+.section-head {
+    font-size: 30rpx;
+    font-weight: 500;
+    margin-bottom: 24rpx;
+}
+
+.section-empty {
+    font-size: 24rpx;
+    color: #8a9099;
+    padding: 20rpx 0;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.bar-name {
+    width: 120rpx;
+    font-size: 24rpx;
+    flex-shrink: 0;
+}
+
+.bar-track {
+    flex: 1;
+    height: 24rpx;
+    background: #f0f1f2;
+    border-radius: 999rpx;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 999rpx;
+}
+
+.bar-count {
+    width: 60rpx;
+    text-align: right;
+    font-size: 24rpx;
+    color: #646a73;
+}
+
+.checkin-stat-row {
+    display: flex;
+    align-items: center;
+    padding: 16rpx 0;
+    border-top: 2rpx solid #f0f1f2;
+}
+
+.checkin-stat-icon {
+    font-size: 36rpx;
+    margin-right: 16rpx;
+}
+
+.checkin-stat-name {
+    flex: 1;
+    font-size: 26rpx;
+}
+
+.checkin-stat-count {
+    font-size: 26rpx;
+    color: #1769e0;
+}
+
+.heat-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.heat-cell {
+    width: 64rpx;
+    height: 64rpx;
+    margin: 0 12rpx 12rpx 0;
+    border-radius: 10rpx;
+    background: #eef0f3;
+}
+
+.heat-cell:nth-child(7n) {
+    margin-right: 0;
+}
+
+.heat-level-0 {
+    background: #eef0f3;
+}
+
+.heat-level-1 {
+    background: #c5ddf9;
+}
+
+.heat-level-2 {
+    background: #7db2f0;
+}
+
+.heat-level-3 {
+    background: #1769e0;
+}
+
+.heat-legend {
+    display: flex;
+    align-items: center;
+    margin-top: 8rpx;
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.heat-legend .heat-cell {
+    width: 28rpx;
+    height: 28rpx;
+    margin: 0 8rpx 0 0;
+    border-radius: 6rpx;
+}
+
+.heat-legend text {
+    margin-right: 8rpx;
+}

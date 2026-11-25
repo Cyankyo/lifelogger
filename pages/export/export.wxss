@@ -1,0 +1,81 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.head-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24rpx;
+}
+
+.head-title {
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+.head-range {
+    margin-top: 12rpx;
+    font-size: 26rpx;
+    color: #646a73;
+}
+
+.head-count {
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: #1769e0;
+}
+
+.list-card {
+    padding: 8rpx 28rpx;
+    margin-bottom: 32rpx;
+}
+
+.preview-item {
+    display: flex;
+    padding: 20rpx 0;
+    border-bottom: 2rpx solid #f0f1f2;
+}
+
+.preview-item:last-child {
+    border-bottom: none;
+}
+
+.preview-date {
+    width: 200rpx;
+    font-size: 24rpx;
+    color: #8a9099;
+}
+
+.preview-title {
+    flex: 1;
+    font-size: 26rpx;
+}
+
+.primary-btn {
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 30rpx;
+}
+
+.primary-btn::after,
+.ghost-btn::after {
+    border: none;
+}
+
+.ghost-btn {
+    margin-top: 16rpx;
+    background: #ffffff;
+    color: #1769e0;
+    border: 2rpx solid #1769e0;
+    font-size: 30rpx;
+}
+
+.hint {
+    display: block;
+    margin-top: 24rpx;
+    text-align: center;
+    font-size: 22rpx;
+    color: #8a9099;
+}

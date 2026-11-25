@@ -1,0 +1,59 @@
+<view class="page">
+    <view class="card search-card">
+        <view class="search-box">
+            <text class="search-icon">🔍</text>
+            <input class="search-input" value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" placeholder="搜索标题、内容、打卡项目…" confirm-type="search" />
+        </view>
+        <button class="search-btn" bindtap="doSearch">搜索</button>
+    </view>
+
+    <!-- 标签筛选 -->
+    <view class="filter-row">
+        <view class="filter-chip {{tagFilterId === '' ? 'filter-chip-active' : ''}}" data-id="" bindtap="onTagFilter">全部</view>
+        <view
+            class="filter-chip {{tagFilterId === item._id ? 'filter-chip-active' : ''}}"
+            wx:for="{{tags}}"
+            wx:key="_id"
+            data-id="{{item._id}}"
+            bindtap="onTagFilter"
+        >
+            <view class="filter-dot" style="background:{{item.color}}"></view>{{item.name}}
+        </view>
+    </view>
+
+    <!-- 结果 -->
+    <block wx:if="{{hasSearched}}">
+        <view class="result-header">
+            <text class="result-count">找到 {{results.length}} 条</text>
+            <view class="export-btn" wx:if="{{results.length > 0}}" bindtap="exportICS">导出 ICS</view>
+        </view>
+
+        <block wx:if="{{results.length > 0}}">
+            <view class="card record-item" wx:for="{{results}}" wx:key="_id" data-id="{{item._id}}" bindtap="onEventTap">
+                <view class="record-top">
+                    <view class="record-type {{item.type === 'checkin' ? 'type-checkin' : 'type-note'}}">
+                        {{item.type === 'checkin' ? '打卡' : '记录'}}
+                    </view>
+                    <text class="record-title">{{item.title}}</text>
+                    <text class="record-date">{{item.date}} {{item.timeText}}</text>
+                </view>
+                <text class="record-content" wx:if="{{item.content}}">{{item.content}}</text>
+                <view class="record-fields" wx:if="{{item.fieldList.length > 0}}">
+                    <text class="field-item" wx:for="{{item.fieldList}}" wx:for-item="fieldText" wx:key="*this">{{fieldText}}</text>
+                </view>
+                <view class="record-tags">
+                    <view class="tag-chip" wx:for="{{item.tagList}}" wx:key="_id" style="background:{{item.color}}">{{item.name}}</view>
+                </view>
+            </view>
+        </block>
+        <view class="empty-view" wx:else>
+            <text class="empty-icon">🔍</text>
+            <text class="empty-text">没有找到匹配的记录</text>
+        </view>
+    </block>
+
+    <view class="empty-view" wx:else>
+        <text class="empty-icon">🔍</text>
+        <text class="empty-text">输入关键词或选择标签开始搜索</text>
+    </view>
+</view>

@@ -1,0 +1,58 @@
+<view class="page">
+    <!-- 概览 -->
+    <view class="summary-row">
+        <view class="card summary-card">
+            <text class="summary-num">{{totalCount}}</text>
+            <text class="summary-label">总记录</text>
+        </view>
+        <view class="card summary-card">
+            <text class="summary-num">{{noteCount}}</text>
+            <text class="summary-label">日常记录</text>
+        </view>
+        <view class="card summary-card">
+            <text class="summary-num">{{checkinCount}}</text>
+            <text class="summary-label">打卡</text>
+        </view>
+    </view>
+
+    <!-- 标签分布 -->
+    <view class="card section">
+        <view class="section-head">标签分布</view>
+        <block wx:if="{{tagStats.length > 0}}">
+            <view class="bar-row" wx:for="{{tagStats}}" wx:key="_id">
+                <text class="bar-name">{{item.name}}</text>
+                <view class="bar-track">
+                    <view class="bar-fill" style="width:{{item.percent}}%;background:{{item.color}}"></view>
+                </view>
+                <text class="bar-count">{{item.count}}</text>
+            </view>
+        </block>
+        <view class="section-empty" wx:else>暂无标签数据</view>
+    </view>
+
+    <!-- 打卡统计 -->
+    <view class="card section" wx:if="{{checkinStats.length > 0}}">
+        <view class="section-head">打卡统计</view>
+        <view class="checkin-stat-row" wx:for="{{checkinStats}}" wx:key="name">
+            <text class="checkin-stat-icon">{{item.icon || '✓'}}</text>
+            <text class="checkin-stat-name">{{item.name}}</text>
+            <text class="checkin-stat-count">{{item.count}} 次</text>
+        </view>
+    </view>
+
+    <!-- 活动热力 -->
+    <view class="card section">
+        <view class="section-head">近 5 周活跃度</view>
+        <view class="heat-grid">
+            <view class="heat-cell heat-level-{{item.level}}" wx:for="{{heatDays}}" wx:key="date"></view>
+        </view>
+        <view class="heat-legend">
+            <text>少</text>
+            <view class="heat-cell heat-level-0"></view>
+            <view class="heat-cell heat-level-1"></view>
+            <view class="heat-cell heat-level-2"></view>
+            <view class="heat-cell heat-level-3"></view>
+            <text>多</text>
+        </view>
+    </view>
+</view>

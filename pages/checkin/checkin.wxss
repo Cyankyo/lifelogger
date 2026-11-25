@@ -1,0 +1,118 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.date-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32rpx;
+}
+
+.date-label {
+    font-size: 28rpx;
+}
+
+.date-value {
+    font-size: 28rpx;
+    color: #1769e0;
+}
+
+.section-title {
+    font-size: 28rpx;
+    font-weight: 500;
+    margin: 24rpx 8rpx 16rpx;
+}
+
+.checkin-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkin-card {
+    width: calc(50% - 12rpx);
+    margin: 0 24rpx 24rpx 0;
+    background: #ffffff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 2rpx 12rpx rgba(31, 35, 41, 0.04);
+}
+
+.checkin-card:nth-child(2n) {
+    margin-right: 0;
+}
+
+.checkin-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32rpx 0 24rpx;
+}
+
+.checkin-icon {
+    font-size: 56rpx;
+}
+
+.checkin-name {
+    margin-top: 12rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+.checkin-hint {
+    margin-top: 6rpx;
+    font-size: 20rpx;
+    color: #8a9099;
+}
+
+.checkin-quick {
+    text-align: center;
+    padding: 18rpx 0;
+    background: #eaf2ff;
+    color: #1769e0;
+    font-size: 24rpx;
+    border-top: 2rpx solid #f0f1f2;
+}
+
+.record-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+
+.record-icon {
+    font-size: 48rpx;
+    margin-right: 24rpx;
+}
+
+.record-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.record-name {
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+.record-time {
+    margin-top: 2rpx;
+    font-size: 20rpx;
+    color: #8a9099;
+    font-variant-numeric: tabular-nums;
+}
+
+.record-detail {
+    margin-top: 6rpx;
+    font-size: 24rpx;
+    color: #646a73;
+}
+
+.manage-link {
+    margin-top: 40rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #1769e0;
+}

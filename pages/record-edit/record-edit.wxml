@@ -1,0 +1,132 @@
+<view class="page">
+    <!-- 类型切换 -->
+    <view class="type-switch">
+        <view class="type-tab {{type === 'note' ? 'type-tab-active' : ''}}" data-type="note" bindtap="setType">日常记录</view>
+        <view class="type-tab {{type === 'checkin' ? 'type-tab-active' : ''}}" data-type="checkin" bindtap="setType">打卡</view>
+    </view>
+
+    <view class="card form-card">
+        <!-- 日期 + 时间：同一行，统一叫「时间」 -->
+        <view class="form-row">
+            <text class="form-label">时间</text>
+            <view class="datetime-group">
+                <picker mode="date" value="{{date}}" bindchange="onDateChange">
+                    <view class="datetime-seg">{{date}}</view>
+                </picker>
+                <picker mode="multiSelector" value="{{timeIndex}}" range="{{timeParts}}" bindchange="onTimeChange">
+                    <view class="datetime-seg datetime-time">{{time}}</view>
+                </picker>
+            </view>
+        </view>
+
+        <!-- 标题 -->
+        <view class="form-row">
+            <text class="form-label">标题</text>
+            <input class="form-input" value="{{title}}" bindinput="onTitleInput" placeholder="如：外出 / 做饭 / 体检" />
+        </view>
+
+        <!-- 普通记录：自定义属性（默认不展示，点下方按钮新增） -->
+        <block wx:if="{{type === 'note'}}">
+            <view class="custom-section">
+                <view class="custom-head">
+                    <text class="form-label">自定义属性</text>
+                    <text class="custom-add" bindtap="addCustomField">＋ 添加属性</text>
+                </view>
+                <block wx:if="{{customFields.length > 0}}">
+                    <view class="custom-row" wx:for="{{customFields}}" wx:key="index">
+                        <input
+                            class="custom-key"
+                            value="{{item.key}}"
+                            data-index="{{index}}"
+                            bindinput="onCustomKeyInput"
+                            placeholder="属性名"
+                        />
+                        <text class="custom-sep">：</text>
+                        <input
+                            class="custom-value"
+                            value="{{item.value}}"
+                            data-index="{{index}}"
+                            bindinput="onCustomValueInput"
+                            placeholder="值"
+                        />
+                        <text class="custom-del" data-index="{{index}}" bindtap="removeCustomField">×</text>
+                    </view>
+                </block>
+                <view class="custom-empty" wx:else>如体温、吃药等，按需添加</view>
+            </view>
+        </block>
+
+        <!-- 打卡：打卡项 + 由打卡项定义的属性 -->
+        <block wx:if="{{type === 'checkin'}}">
+            <view class="form-row">
+                <text class="form-label">打卡项</text>
+                <picker bindchange="onCheckinItemChange" value="{{checkinItemIndex}}" range="{{checkinItems}}" range-key="name">
+                    <view class="form-value">{{checkinItemName || '请选择'}} ›</view>
+                </picker>
+            </view>
+            <view class="custom-section" wx:if="{{customFields.length > 0}}">
+                <view class="custom-head">
+                    <text class="form-label">打卡属性</text>
+                </view>
+                <view class="custom-row" wx:for="{{customFields}}" wx:key="index">
+                    <text class="custom-key-static">{{item.key}}</text>
+                    <text class="custom-sep">：</text>
+                    <input
+                        class="custom-value"
+                        value="{{item.value}}"
+                        data-index="{{index}}"
+                        bindinput="onCustomValueInput"
+                        placeholder="选填"
+                    />
+                </view>
+            </view>
+        </block>
+
+        <!-- 内容 -->
+        <view class="form-block">
+            <text class="form-label">详细内容</text>
+            <textarea class="form-textarea" value="{{content}}" bindinput="onContentInput" placeholder="记录更多细节（选填）" auto-height />
+        </view>
+    </view>
+
+    <!-- 标签 -->
+    <view class="card tag-card">
+        <view class="section-head">标签</view>
+        <view class="tag-picker">
+            <view
+                class="tag-option"
+                style="{{item.style}}"
+                wx:for="{{tagViewList}}"
+                wx:key="_id"
+                data-id="{{item._id}}"
+                bindtap="toggleTag"
+            >
+                <view class="tag-check" wx:if="{{item.active}}">✓</view>
+                <text>{{item.name}}</text>
+                <text class="tag-auto-badge" wx:if="{{item.autoOnly}}">自动</text>
+            </view>
+        </view>
+        <view class="auto-tag-hint" wx:if="{{autoTagNames}}">
+            <text class="auto-tag-badge">自动</text>
+            已根据标题和内容识别，将自动打上：{{autoTagNames}}（点标签可取消）
+        </view>
+        <view class="tag-manage-link" bindtap="goTagManage">管理标签 ›</view>
+    </view>
+
+    <!-- 操作 -->
+    <view class="action-area">
+        <button class="save-btn" bindtap="save" loading="{{loading}}">保存</button>
+        <button class="delete-btn" wx:if="{{editId}}" bindtap="deleteRecord">删除记录</button>
+    </view>
+
+    <!-- 删除确认弹层（不依赖原生弹窗） -->
+    <view class="confirm-mask" wx:if="{{showDeleteConfirm}}" bindtap="cancelDelete"></view>
+    <view class="confirm-dialog" wx:if="{{showDeleteConfirm}}">
+        <view class="confirm-title">删除记录</view>
+        <view class="confirm-content">确定删除这条记录吗？删除后无法恢复。</view>
+        <view class="confirm-actions">
+            <view class="confirm-btn confirm-cancel" bindtap="cancelDelete">取消</view>
+            <view class="confirm-btn confirm-ok" bindtap="confirmDelete">删除</view>
+        </view>
+    </view>
+</view>

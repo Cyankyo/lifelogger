@@ -1,0 +1,38 @@
+<view class="page">
+    <view class="card date-card">
+        <text class="date-label">打卡日期</text>
+        <picker mode="date" value="{{date}}" bindchange="onDateChange">
+            <view class="date-value">{{date}} ›</view>
+        </picker>
+    </view>
+
+    <view class="section-title">选择打卡项</view>
+    <view class="checkin-grid">
+        <view class="checkin-card" wx:for="{{checkinItems}}" wx:key="_id">
+            <view class="checkin-main" data-id="{{item._id}}" bindtap="goFill">
+                <text class="checkin-icon">{{item.icon || '✓'}}</text>
+                <text class="checkin-name">{{item.name}}</text>
+                <text class="checkin-hint">填写详情</text>
+            </view>
+            <view class="checkin-quick" data-id="{{item._id}}" bindtap="quickCheckin">一键打卡</view>
+        </view>
+    </view>
+
+    <view class="section-title">当日打卡记录（{{records.length}}）</view>
+    <block wx:if="{{records.length > 0}}">
+        <view class="card record-item" wx:for="{{records}}" wx:key="_id">
+            <text class="record-icon">{{item.itemIcon}}</text>
+            <view class="record-info">
+                <text class="record-name">{{item.itemName}}</text>
+                <text class="record-time" wx:if="{{item.timeText}}">{{item.timeText}}</text>
+                <text class="record-detail" wx:if="{{item.detailText}}">{{item.detailText}}</text>
+            </view>
+        </view>
+    </block>
+    <view class="empty-view" wx:else>
+        <text class="empty-icon">✓</text>
+        <text class="empty-text">当天还没有打卡</text>
+    </view>
+
+    <view class="manage-link" bindtap="goManage">管理打卡项 ›</view>
+</view>

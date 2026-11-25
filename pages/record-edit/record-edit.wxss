@@ -1,0 +1,322 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.type-switch {
+    display: flex;
+    background: #e8ecf2;
+    border-radius: 16rpx;
+    padding: 6rpx;
+    margin-bottom: 24rpx;
+}
+
+.type-tab {
+    flex: 1;
+    text-align: center;
+    padding: 18rpx 0;
+    font-size: 28rpx;
+    color: #646a73;
+    border-radius: 12rpx;
+}
+
+.type-tab-active {
+    background: #ffffff;
+    color: #1769e0;
+    font-weight: 500;
+    box-shadow: 0 2rpx 8rpx rgba(31, 35, 41, 0.06);
+}
+
+.form-card {
+    padding: 8rpx 28rpx;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    min-height: 100rpx;
+    border-bottom: 2rpx solid #f0f1f2;
+}
+
+.form-row:last-child {
+    border-bottom: none;
+}
+
+.form-label {
+    width: 150rpx;
+    flex-shrink: 0;
+    font-size: 28rpx;
+    color: #1f2329;
+}
+
+.form-input {
+    flex: 1;
+    font-size: 28rpx;
+    text-align: right;
+}
+
+.form-value {
+    flex: 1;
+    font-size: 28rpx;
+    text-align: right;
+    color: #1769e0;
+}
+
+.form-unit {
+    width: 70rpx;
+    text-align: right;
+    font-size: 24rpx;
+    color: #8a9099;
+}
+
+.datetime-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.datetime-seg {
+    font-size: 26rpx;
+    color: #1769e0;
+}
+
+.datetime-time {
+    margin-left: 20rpx;
+}
+
+.custom-section {
+    border-bottom: 2rpx solid #f0f1f2;
+    padding: 16rpx 0;
+}
+
+.custom-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-add {
+    font-size: 24rpx;
+    color: #1769e0;
+}
+
+.custom-empty {
+    margin-top: 12rpx;
+    font-size: 22rpx;
+    color: #a0a5ad;
+}
+
+.custom-row {
+    display: flex;
+    align-items: center;
+    margin-top: 16rpx;
+}
+
+.custom-key {
+    width: 180rpx;
+    font-size: 26rpx;
+    border-bottom: 2rpx solid #e5e8eb;
+    padding: 8rpx 0;
+}
+
+.custom-key-static {
+    width: 180rpx;
+    font-size: 26rpx;
+    color: #1f2329;
+}
+
+.custom-sep {
+    font-size: 26rpx;
+    color: #8a9099;
+    margin: 0 12rpx;
+}
+
+.custom-value {
+    flex: 1;
+    font-size: 26rpx;
+    border-bottom: 2rpx solid #e5e8eb;
+    padding: 8rpx 0;
+}
+
+.custom-del {
+    width: 48rpx;
+    text-align: center;
+    font-size: 36rpx;
+    color: #e8615b;
+    margin-left: 12rpx;
+}
+
+.form-block {
+    padding: 24rpx 0;
+}
+
+.form-block .form-label {
+    display: block;
+    margin-bottom: 16rpx;
+}
+
+.form-textarea {
+    width: 100%;
+    min-height: 140rpx;
+    font-size: 28rpx;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.tag-card {
+    margin-top: 24rpx;
+}
+
+.section-head {
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-bottom: 20rpx;
+}
+
+.tag-picker {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag-option {
+    display: flex;
+    align-items: center;
+    padding: 12rpx 24rpx;
+    margin: 0 16rpx 16rpx 0;
+    border-radius: 999rpx;
+    border: 2rpx solid;
+    background: #ffffff;
+    font-size: 26rpx;
+    font-weight: 500;
+}
+
+/* 选中打钩：白勾在实色底上 */
+.tag-check {
+    width: 26rpx;
+    height: 26rpx;
+    line-height: 26rpx;
+    text-align: center;
+    border-radius: 50%;
+    border: 2rpx solid #ffffff;
+    font-size: 20rpx;
+    margin-right: 10rpx;
+}
+
+/* 自动角标：实色底上用白色描边保持清晰 */
+.tag-auto-badge {
+    margin-left: 10rpx;
+    font-size: 18rpx;
+    color: #ffffff;
+    border: 1rpx solid rgba(255, 255, 255, 0.85);
+    border-radius: 6rpx;
+    padding: 0 6rpx;
+}
+
+.auto-tag-hint {
+    margin-top: 12rpx;
+    padding: 16rpx 20rpx;
+    background: #f0f7ee;
+    border-radius: 12rpx;
+    font-size: 24rpx;
+    color: #3a7a3a;
+}
+
+.auto-tag-badge {
+    display: inline-block;
+    background: #3EAE8C;
+    color: #fff;
+    font-size: 20rpx;
+    padding: 2rpx 12rpx;
+    border-radius: 6rpx;
+    margin-right: 10rpx;
+}
+
+.tag-manage-link {
+    margin-top: 20rpx;
+    text-align: right;
+    font-size: 24rpx;
+    color: #1769e0;
+}
+
+.action-area {
+    margin-top: 40rpx;
+}
+
+.save-btn {
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 32rpx;
+    border: none;
+}
+
+.save-btn::after,
+.delete-btn::after {
+    border: none;
+}
+
+.delete-btn {
+    margin-top: 20rpx;
+    background: #ffffff;
+    color: #e8615b;
+    font-size: 28rpx;
+    border: 2rpx solid #f0c5c2;
+}
+
+.confirm-mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 20;
+}
+
+.confirm-dialog {
+    position: fixed;
+    left: 60rpx;
+    right: 60rpx;
+    top: 40%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border-radius: 20rpx;
+    padding: 36rpx 32rpx 24rpx;
+    z-index: 21;
+    box-sizing: border-box;
+}
+
+.confirm-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    text-align: center;
+}
+
+.confirm-content {
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #646a73;
+    line-height: 1.6;
+}
+
+.confirm-actions {
+    display: flex;
+    margin-top: 32rpx;
+}
+
+.confirm-btn {
+    flex: 1;
+    text-align: center;
+    padding: 20rpx 0;
+    font-size: 28rpx;
+    border-radius: 12rpx;
+}
+
+.confirm-cancel {
+    background: #f2f4f7;
+    color: #646a73;
+    margin-right: 16rpx;
+}
+
+.confirm-ok {
+    background: #e8615b;
+    color: #ffffff;
+}

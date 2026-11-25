@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record-edit/record-edit",
+    "pages/search/search",
+    "pages/stats/stats",
+    "pages/manage/manage",
+    "pages/tag-manage/tag-manage",
+    "pages/checkin/checkin",
+    "pages/checkin-manage/checkin-manage",
+    "pages/export/export",
+    "pages/import/import"
+  ],
+  "window": {
+    "navigationBarTitleText": "生活手记",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7fa",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8a9099",
+    "selectedColor": "#1769e0",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "日历" },
+      { "pagePath": "pages/stats/stats", "text": "统计" },
+      { "pagePath": "pages/manage/manage", "text": "管理" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

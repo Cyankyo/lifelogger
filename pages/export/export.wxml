@@ -1,0 +1,23 @@
+<view class="page">
+    <view class="card head-card">
+        <text class="head-title">导出预览</text>
+        <text class="head-range">{{rangeLabel}}</text>
+        <text class="head-count">共 {{count}} 条日程</text>
+    </view>
+
+    <view class="card list-card">
+        <view class="preview-item" wx:for="{{events}}" wx:key="_id">
+            <text class="preview-date">{{item.date}} {{item.timeText}}</text>
+            <text class="preview-title">{{item.title}}</text>
+        </view>
+        <view class="empty-view" wx:if="{{count === 0}}">
+            <text class="empty-text">该范围内没有记录</text>
+        </view>
+    </view>
+
+    <view class="action-area">
+        <button class="primary-btn" bindtap="shareICS">分享 ICS 文件</button>
+        <button class="ghost-btn" bindtap="copyICS">复制 ICS 内容</button>
+        <text class="hint">ICS 可直接导入系统日历、Google Calendar、Outlook 等</text>
+    </view>
+</view>

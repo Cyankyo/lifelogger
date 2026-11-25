@@ -1,0 +1,48 @@
+<view class="page">
+    <!-- 功能入口 -->
+    <view class="card menu-section">
+        <view class="menu-item" bindtap="goTagManage">
+            <view class="menu-icon" style="background:#eaf2ff">🏷️</view>
+            <view class="menu-info">
+                <text class="menu-title">标签管理</text>
+                <text class="menu-desc">新增标签、设置自动识别关键词 · {{tags.length}} 个</text>
+            </view>
+            <text class="menu-arrow">›</text>
+        </view>
+        <view class="menu-item" bindtap="goCheckinManage">
+            <view class="menu-icon" style="background:#e8f7f1">✅</view>
+            <view class="menu-info">
+                <text class="menu-title">打卡项管理</text>
+                <text class="menu-desc">新增、编辑或删除打卡项 · {{checkins.length}} 项</text>
+            </view>
+            <text class="menu-arrow">›</text>
+        </view>
+    </view>
+
+    <!-- 导出 -->
+    <view class="card section">
+        <view class="section-head">导出日历（ICS）</view>
+        <text class="section-desc">导出后可用日历 App 打开，或发给自己在电脑上导入</text>
+
+        <view class="date-range">
+            <picker mode="date" value="{{exportStart}}" bindchange="onStartChange">
+                <view class="date-box">{{exportStart || '开始日期'}}</view>
+            </picker>
+            <text class="date-sep">至</text>
+            <picker mode="date" value="{{exportEnd}}" bindchange="onEndChange">
+                <view class="date-box">{{exportEnd || '结束日期'}}</view>
+            </picker>
+        </view>
+        <button class="export-btn" bindtap="exportByDate">按日期范围导出</button>
+        <button class="export-btn export-btn-ghost" bindtap="exportAll">导出全部记录</button>
+    </view>
+
+    <!-- 导入 -->
+    <view class="card section">
+        <view class="section-head">导入日历（ICS）</view>
+        <text class="section-desc">从其它日历导出的 .ics 文件，可导入到生活手记</text>
+        <button class="export-btn import-btn" bindtap="goImport">导入 ICS 文件</button>
+    </view>
+
+    <view class="config-link" bindtap="goConfigGuide">云开发配置说明 ›</view>
+</view>

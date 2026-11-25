@@ -1,0 +1,121 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.menu-section {
+    padding: 4rpx 24rpx;
+    margin-bottom: 24rpx;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 24rpx 0;
+    border-bottom: 2rpx solid #f0f1f2;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-icon {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+    margin-right: 20rpx;
+}
+
+.menu-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-title {
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+.menu-desc {
+    margin-top: 6rpx;
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.menu-arrow {
+    font-size: 40rpx;
+    color: #c0c4cc;
+}
+
+.section {
+    margin-bottom: 24rpx;
+}
+
+.section-head {
+    font-size: 30rpx;
+    font-weight: 500;
+    margin-bottom: 12rpx;
+}
+
+.section-desc {
+    display: block;
+    font-size: 22rpx;
+    color: #8a9099;
+    margin-bottom: 24rpx;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24rpx;
+}
+
+.date-box {
+    background: #f5f7fa;
+    padding: 18rpx 20rpx;
+    border-radius: 12rpx;
+    font-size: 26rpx;
+    color: #1f2329;
+    text-align: center;
+    min-width: 200rpx;
+}
+
+.date-sep {
+    margin: 0 16rpx;
+    font-size: 24rpx;
+    color: #8a9099;
+}
+
+.export-btn {
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 28rpx;
+    margin-bottom: 16rpx;
+}
+
+.export-btn::after {
+    border: none;
+}
+
+.export-btn-ghost {
+    background: #ffffff;
+    color: #1769e0;
+    border: 2rpx solid #1769e0;
+}
+
+.import-btn {
+    background: #3eae8c;
+}
+
+.config-link {
+    text-align: center;
+    font-size: 24rpx;
+    color: #8a9099;
+    margin-top: 40rpx;
+}

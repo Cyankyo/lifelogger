@@ -1,0 +1,161 @@
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 24rpx 24rpx 60rpx;
+}
+
+.search-card {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #f5f7fa;
+    border-radius: 12rpx;
+    padding: 0 20rpx;
+    height: 76rpx;
+}
+
+.search-icon {
+    font-size: 28rpx;
+    margin-right: 12rpx;
+}
+
+.search-input {
+    flex: 1;
+    font-size: 28rpx;
+}
+
+.search-btn {
+    margin-left: 16rpx;
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 28rpx;
+    padding: 0 28rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+}
+
+.search-btn::after {
+    border: none;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 24rpx;
+}
+
+.filter-chip {
+    display: flex;
+    align-items: center;
+    padding: 10rpx 22rpx;
+    margin: 0 16rpx 16rpx 0;
+    background: #ffffff;
+    border: 2rpx solid #e5e8eb;
+    border-radius: 999rpx;
+    font-size: 24rpx;
+}
+
+.filter-chip-active {
+    border-color: #1769e0;
+    color: #1769e0;
+    background: #eaf2ff;
+}
+
+.filter-dot {
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 50%;
+    margin-right: 8rpx;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24rpx 8rpx 16rpx;
+}
+
+.result-count {
+    font-size: 26rpx;
+    color: #646a73;
+}
+
+.export-btn {
+    padding: 10rpx 24rpx;
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 24rpx;
+    border-radius: 999rpx;
+}
+
+.record-item {
+    margin-bottom: 16rpx;
+}
+
+.record-top {
+    display: flex;
+    align-items: center;
+}
+
+.record-type {
+    font-size: 20rpx;
+    padding: 4rpx 14rpx;
+    border-radius: 8rpx;
+    margin-right: 14rpx;
+}
+
+.type-note {
+    background: #eaf2ff;
+    color: #1769e0;
+}
+
+.type-checkin {
+    background: #fdeaf1;
+    color: #e4689a;
+}
+
+.record-title {
+    font-size: 28rpx;
+    font-weight: 500;
+    flex: 1;
+}
+
+.record-date {
+    font-size: 22rpx;
+    color: #8a9099;
+}
+
+.record-content {
+    display: block;
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #646a73;
+}
+
+.record-fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12rpx;
+}
+
+.field-item {
+    background: #f2f4f7;
+    color: #555b64;
+    font-size: 22rpx;
+    padding: 6rpx 16rpx;
+    border-radius: 8rpx;
+    margin: 0 12rpx 8rpx 0;
+}
+
+.record-tags {
+    margin-top: 12rpx;
+}
+
+.record-tags .tag-chip {
+    margin-right: 12rpx;
+}

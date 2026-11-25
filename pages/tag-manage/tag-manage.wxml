@@ -1,0 +1,58 @@
+<view class="page">
+    <view class="tip">标签可手动添加，记录时也会根据标题和内容里的关键词自动识别。关键词之间用空格隔开。</view>
+
+    <view class="card tag-list">
+        <view class="tag-item" wx:for="{{tags}}" wx:key="_id">
+            <view class="tag-preview" style="background:{{item.color}}">{{item.name}}</view>
+            <view class="tag-keywords">{{item.keywords.length ? item.keywords.join(' · ') : '无自动关键词'}}</view>
+            <view class="tag-actions">
+                <text class="action-edit" data-tag="{{item}}" bindtap="openEdit">编辑</text>
+                <text class="action-delete" data-id="{{item._id}}" bindtap="deleteTag">删除</text>
+            </view>
+        </view>
+        <view class="empty-view" wx:if="{{tags.length === 0}}">
+            <text class="empty-text">还没有标签</text>
+        </view>
+    </view>
+
+    <view class="add-btn" bindtap="openAdd">＋ 新增标签</view>
+
+    <!-- 删除确认弹层（不依赖原生弹窗） -->
+    <view class="confirm-mask" wx:if="{{showDeleteConfirm}}" bindtap="cancelDelete"></view>
+    <view class="confirm-dialog" wx:if="{{showDeleteConfirm}}">
+        <view class="confirm-title">删除标签</view>
+        <view class="confirm-content">删除后，已有记录上的该标签也会移除。确定删除吗？</view>
+        <view class="confirm-actions">
+            <view class="confirm-btn confirm-cancel" bindtap="cancelDelete">取消</view>
+            <view class="confirm-btn confirm-ok" bindtap="confirmDelete">删除</view>
+        </view>
+    </view>
+
+    <!-- 表单弹层 -->
+    <view class="mask" wx:if="{{showForm}}" bindtap="closeForm"></view>
+    <view class="sheet" wx:if="{{showForm}}">
+        <view class="sheet-title">{{editId ? '编辑标签' : '新增标签'}}</view>
+        <view class="form-row">
+            <text class="form-label">名称</text>
+            <input class="form-input" value="{{name}}" bindinput="onNameInput" placeholder="如：健康" />
+        </view>
+        <view class="form-block">
+            <text class="form-label">自动识别关键词（选填）</text>
+            <textarea class="form-textarea" value="{{keywordsText}}" bindinput="onKeywordsInput" placeholder="如：生病 感冒 发烧 体温" auto-height />
+        </view>
+        <view class="form-block">
+            <text class="form-label">颜色</text>
+            <view class="color-picker">
+                <view
+                    class="color-option {{color === item ? 'color-option-active' : ''}}"
+                    wx:for="{{colors}}"
+                    wx:key="*this"
+                    style="background:{{item}}"
+                    data-color="{{item}}"
+                    bindtap="pickColor"
+                ></view>
+            </view>
+        </view>
+        <button class="sheet-save" bindtap="saveTag">保存</button>
+    </view>
+</view>

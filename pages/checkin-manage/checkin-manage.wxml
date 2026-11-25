@@ -1,0 +1,82 @@
+<view class="page">
+    <view class="tip">新增如「运动」「喝水」等打卡项，可自定义打卡时要填的属性（如时长、卡路里）。</view>
+
+    <view class="card item-list">
+        <view class="item-row" wx:for="{{items}}" wx:key="_id">
+            <view class="item-icon" style="background:{{item.color}}33">{{item.icon || '✓'}}</view>
+            <view class="item-info">
+                <text class="item-name">{{item.name}}</text>
+                <text class="item-fields" wx:if="{{item.fieldsText}}">{{item.fieldsText}}</text>
+            </view>
+            <text class="action-edit" data-item="{{item}}" bindtap="openEdit">编辑</text>
+            <text class="action-delete" data-id="{{item._id}}" bindtap="deleteItem">删除</text>
+        </view>
+        <view class="empty-view" wx:if="{{items.length === 0}}">
+            <text class="empty-text">还没有打卡项</text>
+        </view>
+    </view>
+
+    <view class="add-btn" bindtap="openAdd">＋ 新增打卡项</view>
+
+    <!-- 删除确认弹层（不依赖原生弹窗，预览环境同样可用） -->
+    <view class="confirm-mask" wx:if="{{showDeleteConfirm}}" bindtap="cancelDelete"></view>
+    <view class="confirm-dialog" wx:if="{{showDeleteConfirm}}">
+        <view class="confirm-title">删除打卡项</view>
+        <view class="confirm-content">删除后，已有的打卡记录会保留但不再显示打卡项名称。确定删除吗？</view>
+        <view class="confirm-actions">
+            <view class="confirm-btn confirm-cancel" bindtap="cancelDelete">取消</view>
+            <view class="confirm-btn confirm-ok" bindtap="confirmDelete">删除</view>
+        </view>
+    </view>
+
+    <!-- 表单弹层 -->
+    <view class="mask" wx:if="{{showForm}}" bindtap="closeForm"></view>
+    <view class="sheet" wx:if="{{showForm}}">
+        <view class="sheet-title">{{editId ? '编辑打卡项' : '新增打卡项'}}</view>
+        <view class="form-row">
+            <text class="form-label">名称</text>
+            <input class="form-input" value="{{name}}" bindinput="onNameInput" placeholder="如：运动" />
+        </view>
+        <view class="form-block">
+            <text class="form-label">图标</text>
+            <view class="icon-picker">
+                <view
+                    class="icon-option {{icon === item ? 'icon-option-active' : ''}}"
+                    wx:for="{{icons}}"
+                    wx:key="*this"
+                    data-icon="{{item}}"
+                    bindtap="pickIcon"
+                >{{item}}</view>
+            </view>
+        </view>
+        <view class="form-block">
+            <text class="form-label">颜色</text>
+            <view class="color-picker">
+                <view
+                    class="color-option {{color === item ? 'color-option-active' : ''}}"
+                    wx:for="{{colors}}"
+                    wx:key="*this"
+                    style="background:{{item}}"
+                    data-color="{{item}}"
+                    bindtap="pickColor"
+                ></view>
+            </view>
+        </view>
+        <view class="form-block">
+            <text class="form-label">打卡属性</text>
+            <view class="custom-row" wx:for="{{fields}}" wx:key="index">
+                <input
+                    class="custom-input"
+                    value="{{item}}"
+                    data-index="{{index}}"
+                    bindinput="onFieldInput"
+                    placeholder="属性名，如 时长"
+                />
+                <text class="custom-del" data-index="{{index}}" bindtap="removeField">×</text>
+            </view>
+            <view class="custom-add" bindtap="addField">＋ 添加属性</view>
+            <text class="custom-tip">打卡时按需填写，均可留空</text>
+        </view>
+        <button class="sheet-save" bindtap="saveItem">保存</button>
+    </view>
+</view>

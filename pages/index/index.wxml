@@ -1,0 +1,103 @@
+<view class="page">
+    <!-- 月份导航 -->
+    <view class="month-bar">
+        <view class="month-arrow" bindtap="prevMonth">‹</view>
+        <view class="month-center" bindtap="goToday">
+            <text class="month-title">{{monthLabel}}</text>
+            <text class="month-today">回到今天</text>
+        </view>
+        <view class="month-arrow" bindtap="nextMonth">›</view>
+        <view class="search-btn" bindtap="goToSearch">搜索</view>
+    </view>
+
+    <!-- 日历 -->
+    <view class="calendar card">
+        <view class="week-row">
+            <view class="week-cell" wx:for="{{weekLabels}}" wx:key="*this">{{item}}</view>
+        </view>
+        <view class="grid">
+            <view
+                class="grid-cell {{cell.current ? '' : 'grid-cell-muted'}} {{cell.isToday ? 'grid-cell-today' : ''}} {{cell.isSelected ? 'grid-cell-selected' : ''}}"
+                wx:for="{{cells}}"
+                wx:for-item="cell"
+                wx:key="index"
+                data-date="{{cell.date}}"
+                bindtap="onDateTap"
+            >
+                <text class="day-num">{{cell.day}}</text>
+                <view class="dots">
+                    <view class="dot" wx:for="{{cell.dots}}" wx:for-item="dotColor" wx:key="index" style="background:{{dotColor}}"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 选中日的记录 -->
+    <view class="day-section">
+        <view class="day-header">
+            <view class="day-title">
+                <text class="day-main">{{selectedLabel}}</text>
+                <text class="day-sub">{{selectedWeekday}}</text>
+            </view>
+            <text class="day-count">{{dayEvents.length}} 条记录</text>
+        </view>
+
+        <!-- 快捷打卡 -->
+        <view class="quick-checkin" wx:if="{{checkins.length > 0}}">
+            <text class="quick-label">快捷打卡</text>
+            <view class="quick-list">
+                <view
+                    class="quick-item"
+                    wx:for="{{checkins}}"
+                    wx:key="_id"
+                    data-id="{{item._id}}"
+                    bindtap="onQuickCheckin"
+                >
+                    <text class="quick-icon">{{item.icon || '✓'}}</text>
+                    <text class="quick-name">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+
+        <!-- 记录列表 -->
+        <block wx:if="{{dayEvents.length > 0}}">
+            <view
+                class="record-item card"
+                wx:for="{{dayEvents}}"
+                wx:key="_id"
+                data-id="{{item._id}}"
+                bindtap="onEventTap"
+            >
+                <view class="record-top">
+                    <view class="record-type {{item.type === 'checkin' ? 'type-checkin' : 'type-note'}}">
+                        {{item.type === 'checkin' ? '打卡' : '记录'}}
+                    </view>
+                    <text class="record-title">{{item.title}}</text>
+                    <text class="record-time" wx:if="{{item.timeText}}">{{item.timeText}}</text>
+                </view>
+                <text class="record-content" wx:if="{{item.content}}">{{item.content}}</text>
+                <view class="record-fields" wx:if="{{item.fieldList.length > 0}}">
+                    <text class="field-item" wx:for="{{item.fieldList}}" wx:for-item="fieldText" wx:key="*this">{{fieldText}}</text>
+                </view>
+                <view class="record-tags">
+                    <view
+                        class="tag-chip"
+                        wx:for="{{item.tagList}}"
+                        wx:key="_id"
+                        style="background:{{item.color}}"
+                    >{{item.name}}</view>
+                </view>
+            </view>
+        </block>
+
+        <view class="empty-view" wx:else>
+            <text class="empty-icon">📝</text>
+            <text class="empty-text">这一天还没有记录，点右下角添加</text>
+        </view>
+    </view>
+
+    <!-- 悬浮新增按钮 -->
+    <view class="fab" bindtap="goToRecordEdit">
+        <text class="fab-plus">＋</text>
+    </view>
+</view>
